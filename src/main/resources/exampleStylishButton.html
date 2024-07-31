@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    div#bookTitle{width: 200px; height: 200px; padding: 20px; margin: 0 auto; margin-top: 100px; border-radius: 50px; border: 1px solid black; background-color: yellow;}
+    div#bookAuthor{width: 200px; height: 200px; padding: 20px; margin: 0 auto; margin-top: 20px; border-radius: 50px; border: 1px solid black; background-color: grey;}
+    div#bookTitleValue{font-size: 24px;}
+    div#bookAuthorValue{font-size: 24px;}
+  </style>
+</head>
+<body>
+  <input id="bookTitle" placeholder="book title"/>
+  <input id="bookAuthor" placeholder="book author"/>
+  <input type="button" onClick="createMaze()" value="Super stylish button"></input>
+    
+  <div id="bookTitle">My favourite book: <div id="bookTitleValue"></div></div>
+ 
+  <div id="bookAuthor">My favourite book author: <div id="bookAuthorValue"></div></div>
+
+
+  <script>
+
+    async function createMaze() {
+      var bookTitle = document.getElementById('bookTitle').value;
+      var bookAuthor = document.getElementById('bookAuthor').value;
+
+      console.log(bookTitle);
+      console.log(bookAuthor);
+      const post = await fetch("http://localhost:8080/postexample", {
+        method: "POST",
+        body: JSON.stringify({
+          title: bookTitle,
+          author: bookAuthor
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      }).then((res) => res.text());
+      console.log(post);
+      document.getElementById('bookTitleValue').innerText = JSON.parse(post).title;
+      document.getElementById('bookAuthorValue').innerText = JSON.parse(post).author;
+    }
+  </script>
+</body>
+
+</html>
