@@ -98,4 +98,19 @@ public class DatoriumApiApplication {
 		return new User();
 	}
 
+	@PostMapping("/growPlant")
+	public Plant growPlant(@RequestBody Seed seed) {
+
+		if (seed.type.equals("rose") && seed.environment.equals("sunny")) {
+			var plant = new Plant();
+			plant.name = "garden rose";
+			plant.type = "flower";
+			return plant;
+		}
+		var defaultPlant = new Plant();
+		defaultPlant.name = "unknown plant";
+		defaultPlant.type = "unknown";
+		return defaultPlant;
+	}
+
 }
