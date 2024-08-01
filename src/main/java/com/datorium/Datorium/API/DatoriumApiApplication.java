@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @SpringBootApplication
 @RestController
@@ -29,12 +30,12 @@ public class DatoriumApiApplication {
 	}
 
 	@GetMapping("/sum")
-	public int sum(@RequestParam(value = "number1") int number1, @RequestParam(value = "number2") int number2){
+	public int sum(@RequestParam(value = "number1") int number1, @RequestParam(value = "number2") int number2) {
 		return number1 + number2;
 	}
 
 	@GetMapping("/multiply")
-	public int multiply(@RequestParam(value = "number1") int number1, @RequestParam(value = "number2") int number2){
+	public int multiply(@RequestParam(value = "number1") int number1, @RequestParam(value = "number2") int number2) {
 		return number1 * number2;
 	}
 
@@ -79,11 +80,22 @@ public class DatoriumApiApplication {
 
 
 	@PostMapping("/postexample")
-	public Book addBook(@RequestBody Book book){
+	public Book addBook(@RequestBody Book book) {
 		book.title = book.title.toUpperCase();
 		return book;
 
 	}
 
+	//user authorisation
+	@PostMapping("/authorize")
+	public User authorize(@RequestBody Credentials credentials) {
+		// username + password
+		if (credentials.username.equals("fyodiya")  && credentials.password.equals("123")){
+			var user = new User();
+			user.name = "Elina";
+			return user;
+		}
+		return new User();
+	}
 
 }
