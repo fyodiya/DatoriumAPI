@@ -1,4 +1,4 @@
-package com.datorium.Datorium.API;
+package com.datorium.Datorium.API.DTOs;
 
 public class Plant {
 

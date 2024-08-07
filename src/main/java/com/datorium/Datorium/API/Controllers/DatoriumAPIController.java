@@ -1,6 +1,6 @@
 package com.datorium.Datorium.API.Controllers;
 
-import com.datorium.Datorium.API.*;
+import com.datorium.Datorium.API.DTOs.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
