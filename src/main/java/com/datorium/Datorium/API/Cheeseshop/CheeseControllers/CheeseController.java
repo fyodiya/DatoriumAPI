@@ -1,4 +1,4 @@
-package com.datorium.Datorium.API.Cheeseshop.Controllers;
+package com.datorium.Datorium.API.Cheeseshop.CheeseControllers;
 
 import com.datorium.Datorium.API.Cheeseshop.Cheeseservice.CheeseService;
 import com.datorium.Datorium.API.Cheeseshop.DTOs.Cheese;
