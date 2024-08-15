@@ -6,7 +6,6 @@ import com.datorium.Datorium.API.Services.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/user")
