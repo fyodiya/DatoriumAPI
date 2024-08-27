@@ -1,0 +1,15 @@
+
+Cross-Validation and Implementation on Titanic Data
+
+What is Cross-Validation?
+- Cross-Validation is a technique used to evaluate the performance of a machine learning model. 
+  It helps in assessing how well the model will generalize to an independent dataset.
+- The process involves splitting the dataset into multiple subsets (folds). 
+  The model is trained on some of these folds and tested on the remaining ones. This process is repeated for each fold.
+- K-Fold Cross-Validation is the most common type where the data is split into k equal parts. 
+  The model is trained k times, each time leaving out one of the parts as the validation set and training on the other k-1 parts.
+
+Why Use Cross-Validation?
+- Reduces Overfitting: By training and testing on different parts of the data, cross-validation provides a better indication 
+  of how the model will perform on unseen data.
+- More Reliable: Unlike a single train/test split, cross-validation gives a more reliable estimate of the model's performance.
