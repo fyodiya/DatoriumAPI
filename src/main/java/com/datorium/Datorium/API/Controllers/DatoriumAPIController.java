@@ -85,7 +85,7 @@ public class DatoriumAPIController {
         // username + password
         if (credentials.username.equals("fyodiya")  && credentials.password.equals("123")){
             var user = new User();
-            user.name = "Elina";
+//            user.name = "Elina";
             return user;
         }
         return new User();
