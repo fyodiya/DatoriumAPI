@@ -1,11 +1,10 @@
 package com.datorium.Datorium.API.Controllers;
 
-import com.datorium.Datorium.API.DTOs.UpdateUserDTO;
 import com.datorium.Datorium.API.DTOs.User;
 import com.datorium.Datorium.API.Services.UserService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -23,19 +22,7 @@ public class UserController {
     }
 
     @GetMapping("/all") //localhost:8080/user/all
-    public ArrayList<User> getAllUsers() {
+    public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
-
-    @PostMapping("/update")
-    public User user(@RequestBody UpdateUserDTO updateUserDTO){
-        return userService.update(updateUserDTO.userIndex, updateUserDTO.user);
-    }
-
 }
-
-// CRUD
-// AddUser
-// UpdateUser
-// GetUser
-// DeleteUser
