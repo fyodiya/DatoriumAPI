@@ -13,13 +13,11 @@ public class User {
         this.email = email;
     }
 
-    // Add method to set the name and email
     public void add(String name, String email) {
         this.name = name;
         this.email = email;
     }
 
-    // Get methods
     public String getName() {
         return name;
     }
@@ -28,7 +26,6 @@ public class User {
         return email;
     }
 
-    // Other getter and setter methods (for id, if needed)
     public int getId() {
         return id;
     }

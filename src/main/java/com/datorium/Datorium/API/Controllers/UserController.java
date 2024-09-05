@@ -3,6 +3,7 @@ package com.datorium.Datorium.API.Controllers;
 import com.datorium.Datorium.API.DTOs.UpdateUserDTO;
 import com.datorium.Datorium.API.DTOs.User;
 import com.datorium.Datorium.API.Services.UserService;
+import org.apache.coyote.BadRequestException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -14,21 +15,16 @@ public class UserController {
     public UserController(){
         userService = new UserService();
     }
-    //CRUD
-    //AddUser
-    //UpdateUser
-    //GetUser
-    //DeleteUser
 
-    //@GetMapping
+
     @PostMapping("/add") //localhost:8080/user/add
-    public void add(@RequestBody User user){
+    public void add(@RequestBody User user) throws BadRequestException {
         userService.add(user);
     }
 
     @GetMapping("/get")
-    public ArrayList<User> get(){
-        return userService.get();
+    public ArrayList<User> get(User user){
+        return userService.get(user);
     }
 
     @PostMapping("/update")

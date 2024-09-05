@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class DatoriumApiApplication {
 
 	public static void main(String[] args) {
-				SpringApplication.run(DatoriumApiApplication.class, args);
+		SpringApplication.run(DatoriumApiApplication.class, args);
 	}
 
 }
