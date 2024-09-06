@@ -14,7 +14,7 @@ public class UserService {
     }
 
     public void add(User user) throws BadRequestException {
-        if(user.name.isEmpty()){
+        if(user.getName().isEmpty()){
             throw new BadRequestException("User name is empty");
         }
 
@@ -28,6 +28,10 @@ public class UserService {
             System.err.println("Invalid user object or user name is null.");
             return new ArrayList<>(); //return an empty list if user is null
         }
+    }
+
+    public ArrayList<User> getAll() {
+        return userRepo.get();
     }
 
     public User update(int userIndex, User updateUserDTO) {

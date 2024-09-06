@@ -42,7 +42,7 @@ public class UserRepo {
 
             if (conn != null) {
                 String query = "SELECT name FROM users";
-                ResultSet result = statement.executeQuery(query);
+                var result = statement.executeQuery(query);
 
                 while (result.next()) {
                     var user = new User();

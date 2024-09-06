@@ -27,6 +27,11 @@ public class UserController {
         return userService.get(user);
     }
 
+    @GetMapping("/get/all") //localhost:8080/user/get/all
+    public ArrayList<User> getAll() {
+        return userService.getAll();
+    }
+
     @PostMapping("/update")
     public User update(@RequestBody UpdateUserDTO updateUserDTO){
         return userService.update(updateUserDTO.userIndex, updateUserDTO.user);
