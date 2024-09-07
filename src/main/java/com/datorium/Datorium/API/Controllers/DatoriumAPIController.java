@@ -71,7 +71,6 @@ public class DatoriumAPIController {
         return book;
     }
 
-
     @PostMapping("/postexample")
     public Book addBook(@RequestBody Book book) {
         book.title = book.title.toUpperCase();
@@ -79,7 +78,6 @@ public class DatoriumAPIController {
 
     }
 
-    //user authorisation
     @PostMapping("/authorize")
     public User authorize(@RequestBody Credentials credentials) {
         // username + password
@@ -105,5 +103,4 @@ public class DatoriumAPIController {
         defaultPlant.type = "unknown";
         return defaultPlant;
     }
-
 }

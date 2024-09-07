@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
 public class UserRepo {
 
     private ArrayList<User> users = new ArrayList<>();//Mocked db
@@ -68,7 +69,6 @@ public class UserRepo {
                 statement.executeUpdate(sql);
                 System.out.println("User with ID " + userIndex + " updated in the database.");
 
-                // Fetch the updated user from the database
                 sql = "SELECT id, name, email FROM users WHERE id = " + userIndex;
                 ResultSet result = statement.executeQuery(sql);
                 if (result.next()) {

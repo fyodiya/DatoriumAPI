@@ -38,7 +38,7 @@ public class UserService {
         if (updateUserDTO != null && updateUserDTO.getName() != null) {
             return userRepo.update(userIndex, updateUserDTO);
         } else {
-            System.err.println("Invalid update data.");
+            System.err.println("Invalid data for user update.");
             return null;
         }
     }
