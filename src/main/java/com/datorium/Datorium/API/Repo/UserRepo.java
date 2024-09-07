@@ -58,7 +58,6 @@ public class UserRepo {
         return resultList;
     }
 
-
     public User update(int userIndex, User updateUserDTO) {
         String url = "jdbc:sqlite:my.db";
         try (Connection conn = DriverManager.getConnection(url);
