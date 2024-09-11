@@ -14,10 +14,9 @@ public class UserService {
     }
 
     public void add(User user) throws BadRequestException {
-        if(user.getName().isEmpty()){
-            throw new BadRequestException("User name is empty");
+        if (user.getName().isEmpty() || user.getEmail().isEmpty()) {
+            throw new BadRequestException("User name or email is empty!");
         }
-
         userRepo.add(user);
     }
 
@@ -26,7 +25,7 @@ public class UserService {
             return userRepo.get();
         } else {
             System.err.println("Invalid user object or user name is null.");
-            return new ArrayList<>(); //return an empty list if user is null
+            return new ArrayList<>(); // Return an empty list if user is null
         }
     }
 
@@ -34,9 +33,9 @@ public class UserService {
         return userRepo.get();
     }
 
-    public User update(int userIndex, User updateUserDTO) {
-        if (updateUserDTO != null && updateUserDTO.getName() != null) {
-            return userRepo.update(userIndex, updateUserDTO);
+    public User update(User user) {
+        if (user.getName() != null && user.getEmail() != null) {
+            return userRepo.update(user);
         } else {
             System.err.println("Invalid data for user update.");
             return null;

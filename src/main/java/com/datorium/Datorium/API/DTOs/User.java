@@ -1,7 +1,7 @@
 package com.datorium.Datorium.API.DTOs;
 
 public class User {
-    private int id;
+    public int id;
     public String name;
     private String email;
 
@@ -22,12 +22,12 @@ public class User {
         return name;
     }
 
-    public String getEmail() {
-        return email;
+    public Integer getId() {
+        return id;
     }
 
-    public int getId() {
-        return id;
+    public String getEmail() {
+        return email;
     }
 
     public void setId(int id) {

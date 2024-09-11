@@ -2,17 +2,12 @@ package com.datorium.Datorium.API.Repo;
 
 import com.datorium.Datorium.API.DTOs.User;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
-
 
 public class UserRepo {
 
-    private ArrayList<User> users = new ArrayList<>();//Mocked db
+    private ArrayList<User> users = new ArrayList<>(); // Mocked db
 
     public void add(User user) {
         String url = "jdbc:sqlite:my.db";
@@ -42,12 +37,14 @@ public class UserRepo {
              Statement statement = conn.createStatement()) {
 
             if (conn != null) {
-                String query = "SELECT name FROM users";
-                var result = statement.executeQuery(query);
+                String query = "SELECT id, name, email FROM users";
+                ResultSet result = statement.executeQuery(query);
 
                 while (result.next()) {
                     var user = new User();
+                    user.setId(result.getInt("id"));
                     user.setName(result.getString("name"));
+                    user.setEmail(result.getString("email"));
                     resultList.add(user);
                 }
             }
@@ -58,29 +55,19 @@ public class UserRepo {
         return resultList;
     }
 
-    public User update(int userIndex, User updateUserDTO) {
+    public User update(User user) {
         String url = "jdbc:sqlite:my.db";
         try (Connection conn = DriverManager.getConnection(url);
              Statement statement = conn.createStatement()) {
-
             if (conn != null) {
-                String sql = "UPDATE users SET name = '" + updateUserDTO.getName() + "', email = '" + updateUserDTO.getEmail() + "' WHERE id = " + userIndex;
+                String sql = "UPDATE users SET name = '" + user.getName() + "', email = '" + user.getEmail() + "' WHERE id = " + user.getId();
                 statement.executeUpdate(sql);
-                System.out.println("User with ID " + userIndex + " updated in the database.");
-
-                sql = "SELECT id, name, email FROM users WHERE id = " + userIndex;
-                ResultSet result = statement.executeQuery(sql);
-                if (result.next()) {
-                    User updatedUser = new User();
-                    updatedUser.setId(result.getInt("id"));
-                    updatedUser.setName(result.getString("name"));
-                    updatedUser.setEmail(result.getString("email"));
-                    return updatedUser;
-                }
+                System.out.println("User with name " + user.getName() + " was updated.");
             }
         } catch (SQLException e) {
             System.err.println("SQL error: " + e.getMessage());
         }
-        return null;
+
+        return user;
     }
 }
