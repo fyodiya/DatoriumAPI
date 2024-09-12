@@ -7,8 +7,6 @@ import java.util.ArrayList;
 
 public class UserRepo {
 
-    private ArrayList<User> users = new ArrayList<>(); // Mocked db
-
     public void add(User user) {
         String url = "jdbc:sqlite:my.db";
         try (Connection conn = DriverManager.getConnection(url);
@@ -62,12 +60,30 @@ public class UserRepo {
             if (conn != null) {
                 String sql = "UPDATE users SET name = '" + user.getName() + "', email = '" + user.getEmail() + "' WHERE id = " + user.getId();
                 statement.executeUpdate(sql);
-                System.out.println("User with name " + user.getName() + " was updated.");
+                System.out.println("User with ID " + user.getId() + " was updated.");
             }
         } catch (SQLException e) {
             System.err.println("SQL error: " + e.getMessage());
         }
 
         return user;
+    }
+
+    public void delete(int id) {
+        String url = "jdbc:sqlite:my.db";
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement statement = conn.createStatement()) {
+            if (conn != null) {
+                String sql = "DELETE FROM users WHERE id = " + id;
+                int rowsAffected = statement.executeUpdate(sql);
+                if (rowsAffected > 0) {
+                    System.out.println("User with ID " + id + " was deleted.");
+                } else {
+                    System.out.println("No user found with ID " + id);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("SQL error: " + e.getMessage());
+        }
     }
 }

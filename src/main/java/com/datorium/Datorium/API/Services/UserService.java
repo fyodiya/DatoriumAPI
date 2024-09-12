@@ -7,6 +7,7 @@ import org.apache.coyote.BadRequestException;
 import java.util.ArrayList;
 
 public class UserService {
+
     private UserRepo userRepo;
 
     public UserService() {
@@ -40,5 +41,9 @@ public class UserService {
             System.err.println("Invalid data for user update.");
             return null;
         }
+    }
+
+    public void delete(int id) {
+        userRepo.delete(id);
     }
 }
