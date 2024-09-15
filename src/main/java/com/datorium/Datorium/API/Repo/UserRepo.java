@@ -79,7 +79,7 @@ public class UserRepo {
                 if (rowsAffected > 0) {
                     System.out.println("User with ID " + id + " was deleted.");
                 } else {
-                    System.out.println("No user found with ID " + id);
+                    System.out.println("No user with ID " + id + " was found.");
                 }
             }
         } catch (SQLException e) {

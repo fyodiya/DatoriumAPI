@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @SpringBootApplication
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class DatoriumApiApplication {
 
 	public static void main(String[] args) {
